@@ -15,7 +15,7 @@ public class Mdao {
 	ArrayList<Member> alm = null;
 	ResultSet rs = null;
 	
-	//07 �α��� �޼��� ����
+	//07 로그인 메서드 선언
 	public String mLoginPro(String input_id, String input_pw) throws SQLException, ClassNotFoundException{
 		String login = null;
 		DriverDB db = new DriverDB();
@@ -32,30 +32,30 @@ public class Mdao {
 		pstmt.setString(1, input_id);
 		rs = pstmt.executeQuery();		
 		if(rs.next()){
-			System.out.println("01���̵� ��ġ");
-			login = "01���̵� ��ġ";
+			System.out.println("01아이디 일치");
+			login = "01아이디 일치";
 			dbid = rs.getString("ora_id");
 			dbpw = rs.getString("ora_pw");
 			dblevel = rs.getString("ora_level");
 			dbname = rs.getString("ora_name");
 			if(input_pw.equals(dbpw)){
-				System.out.println("03�α��� ����");
-				login = "03�α��� ����";
+				System.out.println("03로그인 성공");
+				login = "03로그인 성공";
 			
 			}else{
-				System.out.println("04��� ����ġ");
-				login = "04��� ����ġ";
+				System.out.println("04비번 불일치");
+				login = "04비번 불일치";
 			}
 		}else{
-			System.out.println("02���̵� ����ġ");
-			login = "02���̵� ����ġ";
+			System.out.println("02아이디 불일치");
+			login = "02아이디 불일치";
 		}
 		return login;
 	}
 	
-	//06 �˻� ��ȸ �޼��� ����
+	//06 검색 조회 메서드 선언
 	public ArrayList<Member> mSearch(String search) throws ClassNotFoundException, SQLException{
-		System.out.println("06 ȸ�� �˻� �޼��� ����");
+		System.out.println("06 회원 검색 메서드 선언");
 		alm = new ArrayList<Member>();
 		DriverDB db = new DriverDB();
 		conn = db.driverDbcon();		
@@ -82,9 +82,9 @@ public class Mdao {
 
 	}
 	
-	//05 ����ó�� �޼��� ����
+	//05 삭제처리 메서드 선언
 	public void mDelete(String ora_id) throws ClassNotFoundException, SQLException{
-		System.out.println("05 ����ó�� �޼��� ���� Mdao.java");
+		System.out.println("05 삭제처리 메서드 선언 Mdao.java");
 		DriverDB db = new DriverDB();
 		conn = db.driverDbcon();
 		pstmt = conn.prepareStatement("DELETE FROM oracle_member WHERE ora_id=?");
@@ -94,9 +94,9 @@ public class Mdao {
 		if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	}
 	
-	//04 ���� �޼��� ����
+	//04 수정 메서드 선언
 	public void mUpdate(Member m) throws SQLException, ClassNotFoundException{
-		System.out.println("04 ���� �޼��� ���� Mdao.java");
+		System.out.println("04 수정 메서드 선언 Mdao.java");
 		DriverDB db = new DriverDB();
 		conn = db.driverDbcon();	
 		pstmt = conn.prepareStatement(
@@ -113,7 +113,7 @@ public class Mdao {
 		pstmt.executeUpdate();
 	}
 	
-	//03 �Ѹ��� ȸ������ ��ȸ �޼��� ����(����ȭ�鿡 �����ֱ�����)
+	//03 한명의 회원정보 조회 메서드 선언(수정화면에 보여주기위해)
 	public Member mSelectforUpdate(String ora_id) throws ClassNotFoundException, SQLException{
 		System.out.println("03 mSelectforUpdate Mdao.java");
 		Member m = null;
@@ -136,9 +136,9 @@ public class Mdao {
 		return m;
 	}
 	
-	//02 ��üȸ�� ��ȸ �޼��� ����
+	//02 전체회원 조회 메서드 선언
 	public ArrayList<Member> mAllSelect() throws ClassNotFoundException, SQLException{
-		System.out.println("02 ��üȸ�� ��ȸ �޼��� ���� Mdao.java");
+		System.out.println("02 전체회원 조회 메서드 선언 Mdao.java");
 		alm = new ArrayList<Member>();
 		DriverDB db = new DriverDB();
 		conn = db.driverDbcon();		
@@ -158,9 +158,11 @@ public class Mdao {
 		if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 		return alm;
 	}
-	//01 mInsert �޼��� ����
-	public void mInsert(Member m,Connection conn) throws SQLException{
-		System.out.println("01_01�Է�ó���޼��� ���� Mdao.java");
+	//01 mInsert 메서드 선언
+	public void mInsert(Member m) throws SQLException, ClassNotFoundException{
+		System.out.println("01_01입력처리메서드 선언 Mdao.java");
+		DriverDB db = new DriverDB();
+		conn = db.driverDbcon();	
 		String query = "INSERT INTO ORACLE_MEMBER (ora_id, ora_pw, ora_level, ora_name, ora_email) VALUES (?, ?, ?, ?, ?)";
 		pstmt = conn.prepareStatement(query);
 		System.out.println(pstmt + "<-- pstmt 1");

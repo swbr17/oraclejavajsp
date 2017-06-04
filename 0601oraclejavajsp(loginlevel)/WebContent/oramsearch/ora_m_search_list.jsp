@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import = "java.util.*" %>
 <%@ page import = "kr.or.ksmart.dto.Member" %>
@@ -7,8 +7,8 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°Ë»ö°á°ú</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ê²€ìƒ‰ê²°ê³¼</title>
 <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/main.css" />
 												<!-- /layout02/main.css -->
 </head>
@@ -19,13 +19,13 @@
 		 <!-- Begin Right Column -->
 		 <div id="rightcolumn">
 
-	È¸¿ø ¸®½ºÆ® <br>
+	íšŒì› ë¦¬ìŠ¤íŠ¸ <br>
 	<table width="100%" border="1">
 	<tr>
-		<a href="../oramlist/ora_m_list.jsp">ÀüÃ¼¸®½ºÆ® µ¹¾Æ°¡±â</a>
+		<a href="../oramlist/ora_m_list.jsp">ì „ì²´ë¦¬ìŠ¤íŠ¸ ëŒì•„ê°€ê¸°</a>
 	</tr>
 	<tr>
-		<td>¾ÆÀÌµð</td><td>ºñ¹ø</td><td>±ÇÇÑ</td><td>ÀÌ¸§</td><td>ÀÌ¸ÞÀÏ</td><td>¼öÁ¤</td><td>»èÁ¦</td>
+		<td>ì•„ì´ë””</td><td>ë¹„ë²ˆ</td><td>ê¶Œí•œ</td><td>ì´ë¦„</td><td>ì´ë©”ì¼</td><td>ìˆ˜ì •</td><td>ì‚­ì œ</td>
 	</tr>
 
 <%
@@ -42,8 +42,8 @@
 		<td><%= m.getOra_level() %></td>
 		<td><%= m.getOra_name() %></td>
 		<td><%= m.getOra_email() %></td>
-		<td><a href="../oramupdate/ora_m_update_form.jsp?send_id=<%= m.getOra_id() %>">¼öÁ¤</a></td>
-		<td><a href="../oramdelete/ora_m_delete_pro.jsp?send_id=<%= m.getOra_id() %>">»èÁ¦</a></td>
+		<td><a href="../oramupdate/ora_m_update_form.jsp?send_id=<%= m.getOra_id() %>">ìˆ˜ì •</a></td>
+		<td><a href="../oramdelete/ora_m_delete_pro.jsp?send_id=<%= m.getOra_id() %>">ì‚­ì œ</a></td>
 	</tr>
 <%		
 	}

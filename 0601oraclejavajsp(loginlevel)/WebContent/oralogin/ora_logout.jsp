@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-	session.invalidate();	//sessionÁ¾·á
+	session.invalidate();	//sessionì¢…ë£Œ
 %>
 <script language="javascript">
-	alert("·Î±×¾Æ¿ô");
+	alert("ë¡œê·¸ì•„ì›ƒ");
 	location.href = "<%= request.getContextPath() %>/index.jsp";
 </script>
 

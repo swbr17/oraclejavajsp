@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import = "java.util.*" %>
 
    <!-- Begin Wrapper -->
    <div id="wrapper">
@@ -9,6 +9,7 @@
          <div id="header">
 
 <%
+	request.setCharacterEncoding("UTF-8");
 	String SNAME = (String)session.getAttribute("SNAME");
 	String SLEVEL = (String)session.getAttribute("SLEVEL");
 	System.out.println(SNAME + "<-- SNAME top.jsp");
@@ -16,66 +17,48 @@
 	
 	if(SLEVEL == null){
 %>
-		·Î±×ÀÎÀü ¸Þ´º<br>
-<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01È¸¿ø°¡ÀÔ</a><br>
+		ë¡œê·¸ì¸ì „ ë©”ë‰´<br>
+<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01íšŒì›ê°€ìž…</a><br>
 		
 	<form action="<%= request.getContextPath() %>/oralogin/ora_login_pro.jsp" method="post">
-		¾ÆÀÌµð : <input type="text" name="id">
-		ºñ¹ø :  <input type="password" name="pw">
-		<input type="submit" value="·Î±×ÀÎ¹öÆ°">
+		ì•„ì´ë”” : <input type="text" name="id">
+		ë¹„ë²ˆ :  <input type="password" name="pw">
+		<input type="submit" value="ë¡œê·¸ì¸ë²„íŠ¼">
 	</form>
 	
 <%		
 	}else{
-		if(SLEVEL.equals("°ü¸®ÀÚ")){
+		if(SLEVEL.equals("ê´€ë¦¬ìž")){
 %>			
-		°ü¸®ÀÚ ¸Þ´º	<br>
-	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01È¸¿ø°¡ÀÔ</a>
-	<a href="<%= request.getContextPath() %>/oramlist/ora_m_list.jsp">02È¸¿ø¸®½ºÆ®</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_insert_form.jsp">03»óÇ°µî·Ï</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04»óÇ°¸®½ºÆ®</a>		
+		ê´€ë¦¬ìž ë©”ë‰´	<br>
+	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01íšŒì›ê°€ìž…</a>
+	<a href="<%= request.getContextPath() %>/oramlist/ora_m_list.jsp">02íšŒì›ë¦¬ìŠ¤íŠ¸</a>
+	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_insert_form.jsp">03ìƒí’ˆë“±ë¡</a>
+	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04ìƒí’ˆë¦¬ìŠ¤íŠ¸</a>		
 <%			
-		}else if(SLEVEL.equals("ÆÇ¸ÅÀÚ")){
+		}else if(SLEVEL.equals("íŒë§¤ìž")){
 %>			
-		ÆÇ¸ÅÀÚ ¸Þ´º<br>
-	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01È¸¿ø°¡ÀÔ</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_insert_form.jsp">03»óÇ°µî·Ï</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04»óÇ°¸®½ºÆ®</a>		
+		íŒë§¤ìž ë©”ë‰´<br>
+	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01íšŒì›ê°€ìž…</a>
+	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_insert_form.jsp">03ìƒí’ˆë“±ë¡</a>
+	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04ìƒí’ˆë¦¬ìŠ¤íŠ¸</a>		
 <%			
-		}else if(SLEVEL.equals("±¸¸ÅÀÚ")){
+		}else if(SLEVEL.equals("êµ¬ë§¤ìž")){
 %>			
-		±¸¸ÅÀÚ ¸Þ´º	<br>
-	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01È¸¿ø°¡ÀÔ</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04»óÇ°¸®½ºÆ®</a>		
+		êµ¬ë§¤ìž ë©”ë‰´	<br>
+	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01íšŒì›ê°€ìž…</a>
+	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04ìƒí’ˆë¦¬ìŠ¤íŠ¸</a>		
 <%			
 		}
 %>		
 <br><br>
-		<%= SNAME %> ´Ô <%= SLEVEL %> ±ÇÇÑ ·Î±×ÀÎÁß
+		<%= SNAME %> ë‹˜ <%= SLEVEL %> ê¶Œí•œ ë¡œê·¸ì¸ì¤‘
 		<a href="<%= request.getContextPath() %>/oralogin/ora_logout.jsp">
-		·Î±×¾Æ¿ô
+		ë¡œê·¸ì•„ì›ƒ
 		</a>
 <%		
 	}
 %>
 
-  
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		       		 
-			   
 		 </div>
 		 <!-- End Header -->

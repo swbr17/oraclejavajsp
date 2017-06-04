@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 public class DriverDB {
 	public Connection driverDbcon() throws ClassNotFoundException, SQLException{
-		System.out.println("01 µå¶óÀÌ¹ö·Îµù ¹× DB¿¬°á driverDbcon DriverDB.java");
+		System.out.println("01 DriverDBí´ë˜ì„œ driverDbcon()ë©”ì„œë“œ ì‹¤í–‰");
 		Connection reconn = null;
 		Class.forName("oracle.jdbc.OracleDriver");
 		String jdbcDriver = "jdbc:oracle:thin:@localhost:1521:XE";
