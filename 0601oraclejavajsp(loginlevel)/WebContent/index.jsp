@@ -10,8 +10,8 @@
 </head>
 <body>
 
-<%@ include file="../oramodule/top.jsp" %>
-<%@ include file="../oramodule/left.jsp" %>
+<%@ include file="./oramodule/top.jsp" %>
+<%@ include file="./oramodule/left.jsp" %>
 		 <!-- Begin Right Column -->
 		 <div id="rightcolumn">
 		       
@@ -19,5 +19,5 @@
 		 
 		 </div>
 		 <!-- End Right Column -->
-<%@ include file="../oramodule/hadan.jsp" %>
+<%@ include file="./oramodule/hadan.jsp" %>
 		 

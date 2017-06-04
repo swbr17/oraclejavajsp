@@ -34,7 +34,7 @@
 	</tr>
 
 <%
-	request.setCharacterEncoding("euc-kr");
+	request.setCharacterEncoding("utf-8");
 	Mdao mdao = new Mdao();
 	ArrayList<Member> list = mdao.mAllSelect();
 	for(Member m : list){
