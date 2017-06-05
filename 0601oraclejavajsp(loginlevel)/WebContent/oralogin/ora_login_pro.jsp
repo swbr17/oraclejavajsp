@@ -6,26 +6,32 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
-	String input_id = request.getParameter("id");
-	String input_pw = request.getParameter("pw");
-	System.out.println(input_id + "<-- input_id");
-	System.out.println(input_pw + "<-- input_pw");
-	
-	String dbid = null;
-	String dbpw = null;
-	String dblevel = null;
-	String dbname = null;
-	String dbemail = null;
+	String id = request.getParameter("id");
+	String pw = request.getParameter("pw");
+	System.out.println(id + "<-- input_id");
+	System.out.println(pw + "<-- input_pw");
 	
 	Mdao mdao = new Mdao();
-	String result =	mdao.mLoginPro(input_id, input_pw);
-	if(result.equals("01아이디 일치")){
-		session.setAttribute("SNAME", dbname);
-		session.setAttribute("SLEVEL", dblevel);
-		session.setAttribute("SID", dbid);
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+	String result =	mdao.mLoginCheck(id, pw);
+	if(result.equals("로그인성공")){
+		Member sessionresult = mdao.mGetSession(id);
+		request.getSession();
+		session.setAttribute("SNAME", sessionresult.getOra_name());
+		session.setAttribute("SLEVEL", sessionresult.getOra_level());
+		session.setAttribute("SID", sessionresult.getOra_id());
+%>
+	<script language="javascript">
+		alert("로그인성공");
+		location.href = "<%= request.getContextPath() %>/index.jsp";
+	</script>
+<%			
 	}else{
-		
+%>
+	<script language="javascript">
+		alert("로그인을 다시 시도해주시기 바랍니다.");
+		location.href = "<%= request.getContextPath() %>/index.jsp";
+	</script>
+<%
 	}
 %>
 

@@ -15,44 +15,61 @@ public class Mdao {
 	ArrayList<Member> alm = null;
 	ResultSet rs = null;
 	
-	//07 로그인 메서드 선언
-	public String mLoginPro(String input_id, String input_pw) throws SQLException, ClassNotFoundException{
+	//08 로그인 세션(한명회원의 아이디,이름,권한 조회) 메서드 선언
+	public Member mGetSession(String id) throws SQLException, ClassNotFoundException{
+		System.out.println("09 mGetSession Mdao.java");
+		DriverDB driverdb = new DriverDB();
+		Connection conn = driverdb.driverDbcon();
+		System.out.println(conn+" <-- conn");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+	
+		String sql = "select ora_id, ora_name, ora_level from oracle_member where ora_id=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+		Member session = new Member();
+		while(rs.next()){
+			session.setOra_id(rs.getString("ora_id"));
+			session.setOra_level(rs.getString("ora_level"));
+			session.setOra_name(rs.getString("ora_name"));
+		}
+		return session;
+	}
+	
+	//07 로그인체크 메서드 선언
+	public String mLoginCheck(String id, String pw) throws ClassNotFoundException, SQLException{
+		System.out.println("08 mLoginCheck Mdao.java");
+		DriverDB driverdb = new DriverDB();
+		Connection conn = driverdb.driverDbcon();
+		System.out.println(conn+" <-- conn");
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		String login = null;
-		DriverDB db = new DriverDB();
-		conn = db.driverDbcon();
-		System.out.println(conn + "<-- conn ora_m_list.jsp");	
-		
-		String dbid = null;
-		String dbpw = null;
-		String dblevel = null;
-		String dbname = null;
-		String dbemail = null;
-		
-		pstmt = conn.prepareStatement("select * from oracle_member where ora_id=?");
-		pstmt.setString(1, input_id);
-		rs = pstmt.executeQuery();		
+
+		String sql = "select ora_id, ora_pw, ora_level, ora_name from oracle_member where ora_id=? and ora_pw=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		pstmt.setString(2, pw);
+		rs = pstmt.executeQuery();
 		if(rs.next()){
-			System.out.println("01아이디 일치");
-			login = "01아이디 일치";
-			dbid = rs.getString("ora_id");
-			dbpw = rs.getString("ora_pw");
-			dblevel = rs.getString("ora_level");
-			dbname = rs.getString("ora_name");
-			if(input_pw.equals(dbpw)){
-				System.out.println("03로그인 성공");
-				login = "03로그인 성공";
-			
+			if(id.equals(rs.getString("ora_id"))){
+				System.out.println("01아이디일치");
+				login = "아이디일치";
+				if(pw.equals(rs.getString("ora_pw"))){
+					System.out.println("03로그인성공");
+					login = "로그인성공";
+				}else{
+					System.out.println("04비번불일치");
+					login = "비번불일치";
+				}
 			}else{
-				System.out.println("04비번 불일치");
-				login = "04비번 불일치";
+				System.out.println("02아이디불일치");
+				login = "아이디불일치";
 			}
-		}else{
-			System.out.println("02아이디 불일치");
-			login = "02아이디 불일치";
 		}
 		return login;
 	}
-	
 	//06 검색 조회 메서드 선언
 	public ArrayList<Member> mSearch(String search) throws ClassNotFoundException, SQLException{
 		System.out.println("06 회원 검색 메서드 선언");

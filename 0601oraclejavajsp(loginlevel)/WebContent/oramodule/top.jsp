@@ -33,21 +33,21 @@
 		관리자 메뉴	<br>
 	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01회원가입</a>
 	<a href="<%= request.getContextPath() %>/oramlist/ora_m_list.jsp">02회원리스트</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_insert_form.jsp">03상품등록</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04상품리스트</a>		
+	<a href="<%= request.getContextPath() %>/oragoods/oraginsert/ora_g_insert_form.jsp">03상품등록</a>
+	<a href="<%= request.getContextPath() %>/oragoods/oraglist/ora_g_list.jsp">04상품리스트</a>		
 <%			
 		}else if(SLEVEL.equals("판매자")){
 %>			
 		판매자 메뉴<br>
 	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01회원가입</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_insert_form.jsp">03상품등록</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04상품리스트</a>		
+	<a href="<%= request.getContextPath() %>/oragoods/oraginsert/ora_g_insert_form.jsp">03상품등록</a>
+	<a href="<%= request.getContextPath() %>/oragoods/oraglist/ora_g_list.jsp">04상품리스트</a>		
 <%			
 		}else if(SLEVEL.equals("구매자")){
 %>			
 		구매자 메뉴	<br>
 	<a href="<%= request.getContextPath() %>/oraminsert/ora_m_insert_form.jsp">01회원가입</a>
-	<a href="<%= request.getContextPath() %>/oragoods/ora_goods_list01.jsp">04상품리스트</a>		
+	<a href="<%= request.getContextPath() %>/oragoods/oraglist/ora_g_list.jsp">04상품리스트</a>		
 <%			
 		}
 %>		

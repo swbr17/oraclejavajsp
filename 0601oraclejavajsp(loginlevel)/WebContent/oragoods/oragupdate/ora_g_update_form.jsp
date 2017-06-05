@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품등록화면</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/main.css" />
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/main.css" />
 </head>
 <body>
 <%@ include file="/oramodule/top.jsp" %>
